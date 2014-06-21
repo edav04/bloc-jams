@@ -118,8 +118,8 @@ require('./collection');
   var updateCollectionView = function() {
    var $collection = $(".collection-container .row");
    $collection.empty();
- 
-   for (var i = 0; i < 33; i++) {
+   var num = Math.floor((Math.random() * 20) + 6);
+   for (var i = 0; i < num; i++) {
      var $newThumbnail = buildAlbumThumbnail();
      $collection.append($newThumbnail);
    }
