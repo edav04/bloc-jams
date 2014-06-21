@@ -91,7 +91,46 @@
   globals.require.brunch = true;
 })();
 require.register("scripts/app", function(exports, require, module) {
-require("./landing")
+require("./landing");
+require('./collection');
+});
+
+;require.register("scripts/collection", function(exports, require, module) {
+ var buildAlbumThumbnail = function() {
+    var template =
+        '<div class="collection-album-container col-md-2">'
+      + '  <img src="/images/album-placeholder.png"/>'
+      + '  <div class="caption album-collection-info">'
+      + '    <p>'
+      + '      <a class="album-name" href="/album.html"> Album Name </a>'
+      + '      <br/>'
+      + '      <a href="/album.html"> Artist name </a>'
+      + '      <br/>'
+      + '      X songs'
+      + '      <br/>'
+      + '    </p>'
+      + '  </div>'
+      + '</div>';
+ 
+   return $(template);
+ };
+
+  var updateCollectionView = function() {
+   var $collection = $(".collection-container .row");
+   $collection.empty();
+ 
+   for (var i = 0; i < 33; i++) {
+     var $newThumbnail = buildAlbumThumbnail();
+     $collection.append($newThumbnail);
+   }
+ };
+
+ if (document.URL.match(/\/collection.html/)) {
+   // Wait until the HTML is fully processed.
+   $(document).ready(function() {
+     updateCollectionView();
+   });
+ }
 });
 
 ;require.register("scripts/landing", function(exports, require, module) {
@@ -110,8 +149,20 @@ $(document).ready(function() {
      console.log('Off-hover action triggered.');
      $(this).animate({'margin-top': '0px'});
    };
- 
+
+   var onHoverAction1 = function(event) {
+     console.log('Hover action triggered.');
+     $(this).css({'color': 'pink'});
+   };
+
+   var changeFont = function(event) {   
+     $(this).css({'font-size': '5px'});
+   };
+
    $('.selling-points .point').hover(onHoverAction, offHoverAction);
+   $('.selling-points .point').hover(changeFont);
+
+   $('.hero-content h3').hover(onHoverAction1);
 });
 });
 
