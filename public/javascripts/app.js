@@ -264,7 +264,9 @@ var buildAlbumOverlay = function(albumURL) {
   var updateCollectionView = function() {
    var $collection = $(".collection-container .row");
    $collection.empty();
+
    var num = Math.floor((Math.random() * 20) + 6);
+
    for (var i = 0; i < num; i++) {
      var $newThumbnail = buildAlbumThumbnail();
      $collection.append($newThumbnail);
@@ -274,12 +276,12 @@ var buildAlbumOverlay = function(albumURL) {
    $(this).append(buildAlbumOverlay("/album.html"));
    };
 
-   var offHover = function(event) {
+  var offHover = function(event) {
     $(this).find('.collection-album-image-overlay').remove();
-   };
-  
-   $collection.find('.collection-album-image-container').hover(onHover);
-  }; 
+  };
+
+  $collection.find('.collection-album-image-container').hover(onHover, offHover);
+};
 
 
 
