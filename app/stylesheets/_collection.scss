@@ -39,23 +39,23 @@
       text-align: center;
       }
       .collection-overlay-button {
-      font-size: 20px;
-      background-color: white;
-      color: #d2287b;
-      border-radius: 50% 50%;
-      display: inline-block;
-      width: 42px;
-      height: 42px;
-      }
+          font-size: 20px;
+          background-color: white;
+          color: #d2287b;
+          border-radius: 50% 50%;
+          display: inline-block;
+          width: 42px;
+          height: 42px;
+          i {
+            line-height: 42px;
+          .fa-play {
+            padding-left: 5px;
+              }  
+            }
+          }
       .collection-overlay-button:hover {
       cursor: pointer;
       color: white;
       background-color: #d2287b;
-      }
-      .collection-overlay-button i {
-      line-height: 42px;
-      }
-      .collection-overlay-button .fa-play {
-      padding-left: 5px;   
       }
   }

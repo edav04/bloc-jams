@@ -58,10 +58,7 @@ var buildAlbumOverlay = function(albumURL) {
   $collection.find('.collection-album-image-container').hover(onHover, offHover);
 };
 
-
-
-
- if (document.URL.match(/\/collection.html/)) {
+if (document.URL.match(/\/collection.html/)) {
    // Wait until the HTML is fully processed.
    $(document).ready(function() {
      updateCollectionView();
