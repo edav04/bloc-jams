@@ -330,7 +330,7 @@ require.register("scripts/album", function(exports, require, module) {
    }
  }]);
 
-  blocJams.controller('Album.controller', ['$scope', function($scope) {
+  blocJams.controller('Album.controller', ['$scope', 'SongPlayer', function($scope, SongPlayer) { 
    $scope.album = angular.copy(albumPicasso);
 
    var hoveredSong = null;
@@ -345,7 +345,7 @@ require.register("scripts/album", function(exports, require, module) {
    };
 
    $scope.getSongState = function(song) {
-    if (song === playingSong) {
+    if (song === playingSong) {     
        return 'playing';
      }
      else if (song === hoveredSong) {
@@ -363,7 +363,28 @@ require.register("scripts/album", function(exports, require, module) {
     };
  }]);
  
-
+blocJams.controller('PlayerBar.controller', ['$scope', 'SongPlayer', function($scope, SongPlayer) {
+  $scope.songPlayer = SongPlayer;
+}]);
+ 
+ blocJams.service('SongPlayer', function() {
+   return {
+     currentSong: null,
+     currentAlbum: null,
+     playing: false,
+ 
+     play: function() {
+       this.playing = true;
+     },
+     pause: function() {
+       this.playing = false;
+     },
+     setSong: function(album, song) {
+       this.currentAlbum = album;
+       this.currentSong = song;
+     }
+   };
+ });
 });
 
 ;require.register("scripts/collection", function(exports, require, module) {
