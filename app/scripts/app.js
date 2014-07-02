@@ -83,8 +83,8 @@
      hoveredSong = null;
    };
 
-   $scope.getSongState = function(song) {
-    if (song === playingSong) {     
+   $scope.getSongState = function(song) { 
+       if (song === SongPlayer.currentSong && SongPlayer.playing) {   
        return 'playing';
      }
      else if (song === hoveredSong) {
@@ -94,11 +94,12 @@
    };
 
     $scope.playSong = function(song) {
-      playingSong = song;
+      SongPlayer.setSong($scope.album, song);
+      SongPlayer.play();
     };
  
     $scope.pauseSong = function(song) {
-      playingSong = null;
+      SongPlayer.pause();
     };
  }]);
  

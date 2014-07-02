@@ -344,8 +344,8 @@ require.register("scripts/album", function(exports, require, module) {
      hoveredSong = null;
    };
 
-   $scope.getSongState = function(song) {
-    if (song === playingSong) {     
+   $scope.getSongState = function(song) { 
+       if (song === SongPlayer.currentSong && SongPlayer.playing) {   
        return 'playing';
      }
      else if (song === hoveredSong) {
@@ -355,11 +355,12 @@ require.register("scripts/album", function(exports, require, module) {
    };
 
     $scope.playSong = function(song) {
-      playingSong = song;
+      SongPlayer.setSong($scope.album, song);
+      SongPlayer.play();
     };
  
     $scope.pauseSong = function(song) {
-      playingSong = null;
+      SongPlayer.pause();
     };
  }]);
  
